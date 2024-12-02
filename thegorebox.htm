@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> </title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="Downloads/red.jpg" alt="Immagine a schermo intero">
+    <audio id="audio" autoplay loop>
+        <source src="Downloads/The Gorebox.mp3" type="audio/mpeg">
+        Il tuo browser non supporta l'elemento audio.
+    </audio>
+
+    <script>
+        // Funzione per impostare la modalità a schermo intero
+        function enableFullScreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari e Opera
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+
+        // Imposta l'audio al massimo volume e riproduci
+        const audio = document.getElementById('audio');
+        audio.volume = 1.0;
+
+        // Attiva la modalità schermo intero quando la pagina viene caricata
+        window.onload = function() {
+            enableFullScreen();
+        };
+    </script>
+</body>
+</html>
